@@ -1,0 +1,83 @@
+[gd_scene load_steps=14 format=3 uid="uid://carxmak6bx8vt"]
+
+[ext_resource type="Script" path="res://project/player.gd" id="1_3olk1"]
+[ext_resource type="Texture2D" uid="uid://damh2xh328ntv" path="res://project/art/frame_attack_01.png" id="2_2jds5"]
+[ext_resource type="Texture2D" uid="uid://dibenhkpm5bql" path="res://project/art/frame_01.png" id="3_3xi5j"]
+[ext_resource type="Texture2D" uid="uid://by42xah8h6p54" path="res://project/art/frame_attack_02.png" id="3_rhma2"]
+[ext_resource type="Texture2D" uid="uid://7tju65002xcw" path="res://project/art/frame_attack_03.png" id="4_c8ago"]
+[ext_resource type="Texture2D" uid="uid://bom620v6itoql" path="res://project/art/frame_02.png" id="4_gx60e"]
+[ext_resource type="Texture2D" uid="uid://oqshrfgnfmqa" path="res://project/art/frame_attack_04.png" id="5_oki0o"]
+[ext_resource type="Texture2D" uid="uid://c8y740v4tq78l" path="res://project/art/frame_03.png" id="5_qex1o"]
+[ext_resource type="Texture2D" uid="uid://btfyfjkdhhu6p" path="res://project/art/frame_04.png" id="6_8tdc0"]
+[ext_resource type="Texture2D" uid="uid://b5oqeehrbxbsu" path="res://project/art/frame_attack_05_sword.png" id="6_t1dot"]
+[ext_resource type="Texture2D" uid="uid://crqxpxy8tjc16" path="res://project/art/frame_05.png" id="7_bhskn"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_035ch"]
+size = Vector3(1.125, 1, 1)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6hiac"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_2jds5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_rhma2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_c8ago")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_oki0o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_t1dot")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_2jds5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_rhma2")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_3xi5j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_gx60e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_qex1o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_8tdc0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_bhskn")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_3olk1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0625, 0.740712, 0)
+shape = SubResource("BoxShape3D_035ch")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.659794, -0.0342005)
+pixel_size = 0.02
+sprite_frames = SubResource("SpriteFrames_6hiac")
+animation = &"attack"
