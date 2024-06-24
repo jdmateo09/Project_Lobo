@@ -1,0 +1,55 @@
+[gd_scene load_steps=9 format=3 uid="uid://dfqfetopu135s"]
+
+[ext_resource type="Script" path="res://project/golem.gd" id="1_q6vub"]
+[ext_resource type="Texture2D" uid="uid://eyluy3cbe3o3" path="res://project/art/Golem_idle_01.png" id="1_vwruk"]
+[ext_resource type="Texture2D" uid="uid://cmam3krlu1nec" path="res://project/art/Golem_idle_02.png" id="2_6qkoi"]
+[ext_resource type="Texture2D" uid="uid://tsbihfob6n15" path="res://project/art/Golem_idle_03.png" id="3_e0d02"]
+[ext_resource type="Texture2D" uid="uid://cr020gifaim53" path="res://project/art/Golem_hit.png" id="3_r0n6g"]
+[ext_resource type="Texture2D" uid="uid://b5100l5bw542k" path="res://project/art/Golem_idle_04.png" id="4_78rcl"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qqivg"]
+size = Vector3(1.41699, 1.77942, 1)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_14nub"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_vwruk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_r0n6g")
+}],
+"loop": true,
+"name": &"hit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_vwruk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_6qkoi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_e0d02")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_78rcl")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="Golem" type="CharacterBody3D"]
+collision_mask = 0
+script = ExtResource("1_q6vub")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_qqivg")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.03, 0, 0)
+pixel_size = 0.03
+sprite_frames = SubResource("SpriteFrames_14nub")
+animation = &"hit"

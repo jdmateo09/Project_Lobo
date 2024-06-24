@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://ch8t4grlc0x50"]
+[gd_scene load_steps=5 format=3 uid="uid://ch8t4grlc0x50"]
 
 [ext_resource type="PackedScene" uid="uid://carxmak6bx8vt" path="res://project/player.tscn" id="1_koofv"]
+[ext_resource type="PackedScene" uid="uid://dfqfetopu135s" path="res://project/golem.tscn" id="2_2u3f5"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_up5l1"]
 size = Vector3(60, 2, 60)
@@ -12,6 +13,7 @@ size = Vector3(60, 2, 60)
 
 [node name="Ground" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.132, 0)
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
 shape = SubResource("BoxShape3D_up5l1")
@@ -32,3 +34,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.849565, 0)
 [node name="Camera3D" type="Camera3D" parent="CameraWolf"]
 transform = Transform3D(1, 0, 0, 0, 0.813832, 0.5811, 0, -0.5811, 0.813832, 0, 4.38768, 5.11631)
 fov = 33.1
+
+[node name="Golem" parent="." instance=ExtResource("2_2u3f5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.51683, 1.44055, 0.204989)

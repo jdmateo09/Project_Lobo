@@ -1,0 +1,45 @@
+[gd_scene load_steps=8 format=3 uid="uid://uga3xiqojxjv"]
+
+[ext_resource type="Texture2D" uid="uid://eyluy3cbe3o3" path="res://project/art/Golem_idle_01.png" id="1_t4ee0"]
+[ext_resource type="Texture2D" uid="uid://cmam3krlu1nec" path="res://project/art/Golem_idle_02.png" id="2_aqf06"]
+[ext_resource type="Texture2D" uid="uid://tsbihfob6n15" path="res://project/art/Golem_idle_03.png" id="3_j0h01"]
+[ext_resource type="Texture2D" uid="uid://b5100l5bw542k" path="res://project/art/Golem_idle_04.png" id="4_b3oqo"]
+[ext_resource type="Script" path="res://project/scripts/HurtBox.gd" id="5_s20d1"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_080cm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_t4ee0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_aqf06")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_j0h01")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_b3oqo")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ke3xl"]
+size = Vector3(1.41699, 1.77942, 1)
+
+[node name="Golem" type="Node"]
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, 0)
+pixel_size = 0.03
+sprite_frames = SubResource("SpriteFrames_080cm")
+animation = &"idle"
+
+[node name="HurtBox" type="Area3D" parent="AnimatedSprite3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03, 0, 0)
+script = ExtResource("5_s20d1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AnimatedSprite3D/HurtBox"]
+shape = SubResource("BoxShape3D_ke3xl")
